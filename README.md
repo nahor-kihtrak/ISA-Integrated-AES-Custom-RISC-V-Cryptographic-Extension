@@ -48,6 +48,7 @@ RISC-V CPU
  ├── Instruction Memory
  └── Data Memory
 
+
 📂 Repository Structure
 aes_core.v        - AES-128 encryption core
 alu.v             - ALU with AES instruction support
