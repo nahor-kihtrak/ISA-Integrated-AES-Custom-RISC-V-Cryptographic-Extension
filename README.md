@@ -7,19 +7,9 @@ Project Type: Mini Project
 📌 Project Overview
 
 This project implements AES-128 encryption integrated directly into a RISC-V Instruction Set Architecture (ISA) using custom cryptographic instructions.
-Instead of executing AES purely in software, cryptographic operations are accelerated at the instruction level, improving performance and architectural efficiency.
+By embedding AES operations at the instruction level, the design enables cryptographic acceleration compared to software-only implementations.
 
-The design is written using Verilog and SystemVerilog, simulated with Icarus Verilog, verified using GTKWave, and prepared for synthesis using Xilinx Vivado.
-
-🎯 Objectives
-
-Integrate custom AES instructions into a RISC-V CPU
-
-Implement hardware-accelerated AES-128 encryption
-
-Verify correctness using register dump output
-
-Validate functionality using waveform analysis
+The project is developed using Verilog and SystemVerilog, simulated with Icarus Verilog, verified using GTKWave, and prepared for synthesis using Xilinx Vivado.
 
 🛠️ Tools & Technologies
 
@@ -37,7 +27,7 @@ Windows environment
 
 Custom RISC-V ISA extensions for AES
 
-Modular RTL design (CPU, control, ALU, AES core)
+Modular RTL design (CPU, Control, ALU, AES Core)
 
 Register-level visibility via terminal output
 
@@ -46,18 +36,17 @@ Waveform-based functional verification
 RTL suitable for FPGA synthesis
 
 🏗️ Project Architecture
-
 RISC-V CPU
-├── Control Unit
-├── ALU (Extended for AES)
-├── AES Core
-│ ├── SubBytes
-│ ├── ShiftRows
-│ ├── MixColumns
-│ └── AddRoundKey
-├── Register File
-├── Instruction Memory
-└── Data Memory
+ ├── Control Unit
+ ├── ALU (Extended for AES)
+ ├── AES Core
+ │    ├── SubBytes
+ │    ├── ShiftRows
+ │    ├── MixColumns
+ │    └── AddRoundKey
+ ├── Register File
+ ├── Instruction Memory
+ └── Data Memory
 
 📂 Repository Structure
 aes_core.v        - AES-128 encryption core
@@ -109,11 +98,3 @@ RISC-V ISA extension development
 VLSI design and verification
 
 FPGA-based security systems
-
-📌 Notes
-
-Developed as a mini project
-
-Focuses on ISA-level cryptographic integration
-
-Easily extendable to support AES decryption or additional instructions
