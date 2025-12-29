@@ -1,8 +1,3 @@
-Excellent — thanks for the clear details 👍
-Below is a **strong, resume-optimized `README.md`** you can directly paste into your GitHub repository.
-
----
-
 # 🔐 ISA-Integrated AES: Custom RISC-V Instructions for Direct Cryptographic Acceleration
 
 **Author:** Karthik Rohan R
@@ -128,22 +123,3 @@ gtkwave dump.vcd
 * RISC-V ISA extension research
 * VLSI design & verification projects
 * FPGA-based security implementations
-
----
-
-## 📌 Notes
-
-* Designed as a **mini project** with focus on **architecture + verification**
-* Easily extendable to include **decryption** or **side-channel optimizations**
-* Suitable for showcasing **VLSI, HDL, and cryptography skills** on resumes
-
----
-
-If you want next:
-
-* ✅ A **GitHub repository description**
-* ✅ **Resume bullet points (2–3 lines)**
-* ✅ **LinkedIn project description**
-* ✅ Help organizing folders exactly as recruiters expect
-
-Just tell me 👍
