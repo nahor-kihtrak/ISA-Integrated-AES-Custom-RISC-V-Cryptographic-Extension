@@ -1,145 +1,119 @@
-```md
-# 🔐 ISA-Integrated AES: Custom RISC-V Instructions for Direct Cryptographic Acceleration
+🔐 ISA-Integrated AES: Custom RISC-V Instructions for Direct Cryptographic Acceleration
 
-**Author:** Karthik Rohan R  
-**GitHub:** [nahor-kihtrak](https://github.com/nahor-kihtrak)  
-**Project Type:** Mini Project  
+Author: Karthik Rohan R
+GitHub: nahor-kihtrak
+Project Type: Mini Project
 
----
+📌 Project Overview
 
-## 📌 Project Overview
+This project implements AES-128 encryption integrated directly into a RISC-V Instruction Set Architecture (ISA) using custom cryptographic instructions.
+Instead of executing AES purely in software, cryptographic operations are accelerated at the instruction level, improving performance and architectural efficiency.
 
-This project implements **AES-128 encryption integrated directly into a RISC-V Instruction Set Architecture (ISA)** using **custom cryptographic instructions**.  
-By embedding AES operations at the **instruction level**, the design achieves efficient cryptographic acceleration compared to software-only implementations.
+The design is written using Verilog and SystemVerilog, simulated with Icarus Verilog, verified using GTKWave, and prepared for synthesis using Xilinx Vivado.
 
-The project is developed using **Verilog and SystemVerilog**, simulated with **Icarus Verilog**, verified using **GTKWave**, and prepared for synthesis using **Xilinx Vivado**.
+🎯 Objectives
 
----
+Integrate custom AES instructions into a RISC-V CPU
 
-## 🎯 Objectives
+Implement hardware-accelerated AES-128 encryption
 
-- Design and integrate **custom RISC-V instructions** for AES encryption  
-- Implement **hardware-accelerated AES-128** within the CPU datapath  
-- Verify correctness using **register dump analysis** and **waveform inspection**  
-- Ensure ciphertext correctness using standard AES test vectors  
+Verify correctness using register dump output
 
----
+Validate functionality using waveform analysis
 
-## 🛠️ Tools & Technologies
+🛠️ Tools & Technologies
 
-- **HDL:** Verilog, SystemVerilog  
-- **Simulation:** Icarus Verilog (`iverilog`)  
-- **Waveform Viewer:** GTKWave  
-- **Synthesis:** Xilinx Vivado  
-- **Platform:** Windows  
+Verilog / SystemVerilog
 
----
+Icarus Verilog (iverilog)
 
-## 🧠 Technical Highlights
+GTKWave
 
-- Custom **RISC-V ISA extensions** for cryptographic acceleration  
-- Modular RTL design with clear separation of datapath and control  
-- Register-level visibility through terminal-based dumps  
-- Functional verification using GTKWave waveforms  
-- Synthesis-ready RTL suitable for FPGA implementation  
+Xilinx Vivado
 
----
+Windows environment
 
-## 🏗️ Project Architecture
+🧠 Technical Highlights
 
-```
+Custom RISC-V ISA extensions for AES
+
+Modular RTL design (CPU, control, ALU, AES core)
+
+Register-level visibility via terminal output
+
+Waveform-based functional verification
+
+RTL suitable for FPGA synthesis
+
+🏗️ Project Architecture
 
 RISC-V CPU
-│
-├── Control Unit (Instruction Decode & Control Signals)
-│
-├── ALU (Extended with AES Operations)
-│
+├── Control Unit
+├── ALU (Extended for AES)
 ├── AES Core
-│     ├── SubBytes (S-Box)
-│     ├── ShiftRows
-│     ├── MixColumns
-│     └── AddRoundKey
-│
+│ ├── SubBytes
+│ ├── ShiftRows
+│ ├── MixColumns
+│ └── AddRoundKey
 ├── Register File
-└── Instruction & Data Memory
+├── Instruction Memory
+└── Data Memory
 
-```
+📂 Repository Structure
+aes_core.v        - AES-128 encryption core
+alu.v             - ALU with AES instruction support
+control.v         - Instruction decode and control logic
+cpu.v             - Top-level RISC-V CPU module
+dmem.v            - Data memory
+imem.v            - Instruction memory
+immgen.v          - Immediate generator
+regfile.v         - RISC-V register file
+sbox_tables.vh    - AES S-Box lookup tables
+tb.v              - Testbench
+dump.vcd          - Waveform dump file
+README.md
 
----
+▶️ How to Run (Simulation)
+Compile
+iverilog -g2012 -o aes_riscv cpu.v aes_core.v alu.v control.v regfile.v imem.v dmem.v immgen.v tb.v
 
-## 📂 Repository Structure
-
-```
-
-├── aes_core.v        # AES-128 encryption core
-├── alu.v             # ALU with custom AES instruction support
-├── control.v         # Control unit and instruction decoding
-├── cpu.v             # Top-level RISC-V CPU integration
-├── dmem.v            # Data memory
-├── imem.v            # Instruction memory
-├── immgen.v          # Immediate generator
-├── regfile.v         # RISC-V register file
-├── sbox_tables.vh    # AES S-Box lookup tables
-├── tb.v              # Testbench for verification
-├── dump.vcd          # Generated waveform file
-├── README.md
-
-````
-
----
-
-## ▶️ How to Run (Simulation)
-
-### Compile
-```bash
-iverilog -g2012 -o aes_riscv \
-cpu.v aes_core.v alu.v control.v regfile.v \
-imem.v dmem.v immgen.v tb.v
-````
-
-### Run
-
-```bash
+Run
 vvp aes_riscv
-```
 
-* Register values and intermediate outputs are displayed in the **Windows terminal**
 
-### View Waveforms
+Register dumps are printed in the Windows terminal
 
-```bash
+View Waveforms
 gtkwave dump.vcd
-```
 
----
+✅ Results & Verification
 
-## ✅ Results & Verification
+Correct AES-128 ciphertext match verified
 
-* ✔ Correct **AES-128 ciphertext match** verified using standard test vectors
-* ✔ Register dump confirms correct instruction execution
-* ✔ GTKWave waveforms validate timing and control behavior
-* ✔ RTL is compatible with **Vivado synthesis**
+Register dump confirms proper instruction execution
 
-Screenshots of ciphertext output and waveform analysis are included in the repository.
+GTKWave waveforms validate timing and control behavior
 
----
+Design is Vivado synthesis ready
 
-## 🚀 Applications
+Screenshots of ciphertext output and waveform verification are included in the repository.
 
-* Cryptographic hardware acceleration
-* Secure embedded systems
-* RISC-V ISA extension research
-* VLSI design and verification projects
-* FPGA-based security implementations
+🚀 Applications
 
----
+Cryptographic hardware acceleration
 
-## 📌 Notes
+Secure embedded systems
 
-* Implemented as a **mini project** focusing on CPU-level cryptographic integration
-* Designed for clarity, modularity, and verification
-* Can be extended to support AES decryption or additional cryptographic primitives
+RISC-V ISA extension development
 
-```
-```
+VLSI design and verification
+
+FPGA-based security systems
+
+📌 Notes
+
+Developed as a mini project
+
+Focuses on ISA-level cryptographic integration
+
+Easily extendable to support AES decryption or additional instructions
